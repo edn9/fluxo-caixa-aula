@@ -53,7 +53,7 @@ Aqui na seta vermelha clique em select default shell e escolha ``Git Bash``. Est
 
 Antes de instalar, verifique se tudo esta ok:
 
-```js
+```
 node -v
 v12.14.1
 
