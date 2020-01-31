@@ -155,10 +155,11 @@ Como este é um projeto local apenas para estudos, vamos com o NTS. Como eu esto
 
 ![sqlserver drivers download versions](https://i.imgur.com/MdwJk7d.png)
 
-<a href="https://docs.microsoft.com/pt-br/sql/connect/php/download-drivers-php-sql-server?view=sql-server-ver15" target="blank">Clique aqui</a> para baixar os drivers. Baixe e extraia para a pasta de instalação do PHP 7.2, ex: `C:\wamp64\bin\php\php7.2.18`
+<a href="https://docs.microsoft.com/pt-br/sql/connect/php/download-drivers-php-sql-server?view=sql-server-ver15" target="blank">Clique aqui</a> para baixar os drivers. Baixe e extraia para a pasta de instalação do PHP 7.2, ex: `C:\wamp64\bin\php\php7.2.18\ext`
 
 Geralmente já vem os dois tipos de drivers ts e nts. Por fim edita o arquivo php.ini localizado na pasta do wamp, ex: `wamp/bin/apache/apache2.x.y/bin/php.ini`
 
+`extension=php_sqlsrv_72_nts_x64.dll`
 `extension=php_pdo_sqlsrv_72_nts_x64.dll`
 
 Por fim, reinicie teu Windows.
