@@ -159,7 +159,9 @@ class AdminController extends Controller
     ORDER BY fluxo_caixas.time DESC");
 
     $fCaixa = \App\FluxoCaixa::where('caixa_id', '=', $id)->orderBy('time', 'desc')->paginate(4);
-    return view('caixa-aberto', compact('caixa', 'fCaixa'));
+    $fCaixaTransacoes = \App\FluxoCaixa::where('caixa_id', $id)->where('action', 'rem')->orderBy('time', 'desc')->paginate(4);
+
+    return view('caixa-aberto', compact('caixa', 'fCaixa', 'fCaixaTransacoes'));
   }
 
   public function fechar_caixa(Request $request)

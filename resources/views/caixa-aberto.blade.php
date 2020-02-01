@@ -102,12 +102,25 @@
                     <div class="col">
                         <b><u>Extrato</u></b>
                     </div>
+                    @if(count($fCaixaTransacoes) > 0)
                     <div class="col">
                         <a href="/transacoes/{{$caixa[0]->caixaId}}">Transações</a>
                     </div>
                     <div class="col">
                         <a href="/resumo-financeiro/{{$caixa[0]->caixaId}}">Resumo Financeiro</a>
                     </div>
+                    @else
+                    <div class="col">
+                        <i>
+                            <a href="">Transações</a>
+                        </i>
+                    </div>
+                    <div class="col">
+                        <i>
+                            <a href="">Resumo Financeiro</a>
+                        </i>
+                    </div>
+                    @endif
                 </div>
 
                 @if (session('status'))
