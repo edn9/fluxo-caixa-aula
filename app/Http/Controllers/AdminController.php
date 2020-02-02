@@ -429,7 +429,27 @@ class AdminController extends Controller
     }
     $r = round_up($pRec) . '%';
     $d = round_down($pDesp) . '%';
-    return view('resumo-financeiro', compact('userName', 'cCaixa', 'fCaixa', 'tRec', 'tDesp', 'r', 'd'));
+    foreach ($fCaixa as $f) {
+      if ($f->action == 'add') {
+        if ($f->cash > 0) {
+          $tCash[] = $f->cash;
+        } else {
+          $tCash[] = 0;
+        }
+        if ($f->credit > 0) {
+          $tCredit[] = $f->credit;
+        } else {
+          $tCredit[] = 0;
+        }
+        if ($f->debit > 0) {
+          $tDebit[] = $f->debit;
+        } else {
+          $tDebit[] = 0;
+        }
+      }
+    }
+
+    return view('resumo-financeiro', compact('userName', 'cCaixa', 'fCaixa', 'tRec', 'tDesp', 'r', 'd','tCash','tCredit','tDebit'));
   }
 
   /*** END ***/

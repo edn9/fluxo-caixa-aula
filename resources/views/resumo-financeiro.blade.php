@@ -90,19 +90,17 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    20
+                                                    {{array_sum($tCash)}}
                                                 </td>
                                                 <td>
-                                                    30
+                                                    {{array_sum($tCredit)}}
                                                 </td>
                                                 <td>
-                                                    50
+                                                    {{array_sum($tDebit)}}
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    </p>
-
                                 </div>
                             </div>
                         </div>
