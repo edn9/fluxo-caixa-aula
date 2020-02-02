@@ -15,7 +15,6 @@ class CreateFluxoCaixasTable extends Migration
     {
         Schema::create('fluxo_caixas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('time');
             $table->string('description');
             $table->string('action');
             $table->float('cash')->default(0);
@@ -24,6 +23,7 @@ class CreateFluxoCaixasTable extends Migration
             $table->float('balance');
             $table->bigInteger('caixa_id')->unsigned();
             $table->foreign('caixa_id')->references('id')->on('caixas')->onDelete('cascade');
+            $table->dateTime('time');
             $table->timestamps();
         });
     }

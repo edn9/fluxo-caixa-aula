@@ -15,10 +15,10 @@ class CreateControleCaixasTable extends Migration
     {
         Schema::create('controle_caixas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->dateTime('time');
             $table->bigInteger('caixa_id')->unsigned();
             $table->foreign('caixa_id')->references('id')->on('caixas');
             $table->string('action');
-            $table->dateTime('time');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->float('balance')->nullable();

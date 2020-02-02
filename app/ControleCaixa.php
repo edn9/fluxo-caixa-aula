@@ -10,9 +10,7 @@ class ControleCaixa extends Model
 
     protected $primaryKey = 'id';
 
-    protected $casts = [
-        'time' => 'datetime:H:00',
-    ];
+    protected $dates = ['time'];
 
     protected $fillable = [
         'caixa_id', 'action', 'time', 'user_id', 'balance', 'ip', 'browser'

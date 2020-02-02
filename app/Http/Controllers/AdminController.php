@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
 use Auth;
+use Carbon\Carbon;
 
 use App\Caixa;
 use App\User;
@@ -130,7 +131,7 @@ class AdminController extends Controller
 
         $abCaixa->caixa_id = $id;
         $abCaixa->action = 'open';
-        $abCaixa->time = now();
+        $abCaixa->time = date('Y-m-d H:i:s.v');
         $abCaixa->user_id = \Auth::user()->id;
         if ($b !== []) {
           $abCaixa->balance = $b[0]->balance;
@@ -146,12 +147,20 @@ class AdminController extends Controller
       } */
     }
 
-    $caixa = \DB::select("SELECT TOP 1 caixas.id as caixaId, caixas.description as caixaDescription, caixas.cod as caixaCod, users.id as userId, users.name as userName, controle_caixas.balance as aberturaCaixaBalance, FORMAT(controle_caixas.[time], 'dd/MM/yyyy - HH:mm') as aberturaCaixaTime
-    FROM caixas
-    INNER JOIN users ON (users.id = caixas.user_id)
-    INNER JOIN controle_caixas ON (controle_caixas.caixa_id = caixas.id)
-    WHERE caixas.id =  " . $id . "
-    ORDER BY controle_caixas.[time] DESC");
+    $caixa = Caixa::join('users', 'users.id', 'caixas.user_id')
+      ->join('controle_caixas', 'controle_caixas.caixa_id', 'caixas.id')
+      ->where('caixas.id', $id)
+      ->select(
+        'caixas.id as caixaId',
+        'caixas.description as caixaDescription',
+        'caixas.cod as caixaCod',
+        'users.id as userId',
+        'users.name as userName',
+        'controle_caixas.balance as aberturaCaixaBalance',
+        'controle_caixas.time as aberturaCaixaTime'
+      )
+      ->orderBy('controle_caixas.time', 'desc')
+      ->get()->first();
 
     $fCaixa = \DB::select("SELECT fluxo_caixas.id as controleCaixaId, FORMAT(fluxo_caixas.[time], 'hh:mm') as controleCaixaTime, fluxo_caixas.description as controleCaixaDescription, fluxo_caixas.action as fluxoCaixaAct, fluxo_caixas.cash as controleCaixaCash, fluxo_caixas.credit as controleCaixaCredit, fluxo_caixas.debit as controleCaixaDebit, fluxo_caixas.balance as controleCaixaBalance
     FROM fluxo_caixas 
@@ -308,7 +317,7 @@ class AdminController extends Controller
     }
     if ($balance < 0) {
       $id = $caixaId;
-      $validator->errors()->add('errors', 'Impossivel remover a quantia inserida, caixa ficara ' . $balance . ' negativo!');
+      $validator->errors()->add('errors', 'Impossivel remover a quantia desejada, saldo negativo! ' . $balance);
       return redirect('/caixa-aberto/' . $id)
         ->withErrors($validator)
         ->withInput();

@@ -8,23 +8,23 @@
                 <div class="card-header">
                     <div class="container">
                         <p>
-                            Caixa <b>{{$caixa[0]->caixaDescription}}</b> aberto as <b>{{$caixa[0]->aberturaCaixaTime}}</b> por <b>{{$caixa[0]->userName}}</b> - Lançamentos
+                            Caixa <b>{{$caixa->caixaDescription}}</b> aberto as <b>{{date('d/m/Y - H:i',strtotime($caixa->aberturaCaixaTime))}}</b> por <b>{{$caixa->userName}}</b> - Lançamentos
                         </p>
                         <div class="row">
                             <div class="col-6">
-                                <button class="btn btn-success" type="button" data-toggle="modal" data-target="#add{{$caixa[0]->caixaId}}">
+                                <button class="btn btn-success" type="button" data-toggle="modal" data-target="#add{{$caixa->caixaId}}">
                                     Adicionar Dinheiro
                                 </button>
-                                <div class="modal fade" id="add{{$caixa[0]->caixaId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="add{{$caixa->caixaId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Caixa <b>{{$caixa[0]->caixaDescription}} - Adicionar Dinheiro</b></h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Caixa <b>{{$caixa->caixaDescription}} - Adicionar Dinheiro</b></h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="/adicionar-dinheiro/{{$caixa[0]->caixaId}}" method="post">
+                                            <form action="/adicionar-dinheiro/{{$caixa->caixaId}}" method="post">
                                                 @csrf
                                                 <div class="modal-body">
                                                     <div class="form-group">
@@ -39,7 +39,7 @@
                                                         <label for="value">Valor</label>
                                                         <input type="number" step="0.01" class="form-control cash-mask" id="value" name="value" placeholder="R$ 00,00" required>
                                                     </div>
-                                                    <input type="hidden" value="{{$caixa[0]->caixaDescription}}" name="caixaDescription">
+                                                    <input type="hidden" value="{{$caixa->caixaDescription}}" name="caixaDescription">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-success">Adicionar</button>
@@ -48,19 +48,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#rem{{$caixa[0]->caixaId}}">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#rem{{$caixa->caixaId}}">
                                     Remover Dinheiro
                                 </button>
-                                <div class="modal fade" id="rem{{$caixa[0]->caixaId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="rem{{$caixa->caixaId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Caixa <b>{{$caixa[0]->caixaDescription}} - Remover Dinheiro</b></h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Caixa <b>{{$caixa->caixaDescription}} - Remover Dinheiro</b></h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="/remover-dinheiro/{{$caixa[0]->caixaId}}" method="post">
+                                            <form action="/remover-dinheiro/{{$caixa->caixaId}}" method="post">
                                                 @csrf
                                                 <div class="modal-body">
                                                     <div class="form-group">
@@ -74,7 +74,7 @@
                                                     <div class="form-group">
                                                         <label for="value">Valor</label>
                                                         <input type="number" step="0.01" class="form-control" id="value" name="value" placeholder="R$ 00,00" required>
-                                                        <input type="hidden" value="{{$caixa[0]->caixaDescription}}" name="caixaDescription">
+                                                        <input type="hidden" value="{{$caixa->caixaDescription}}" name="caixaDescription">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -88,7 +88,7 @@
                             </div>
 
                             <div class="col-6 ">
-                                <form action="/caixa-fechado/{{$caixa[0]->caixaId}}" method="post">
+                                <form action="/caixa-fechado/{{$caixa->caixaId}}" method="post">
                                     @csrf
                                     <button class="btn btn-primary float-right" type="submit">Fechar Caixa</button>
                                 </form>
@@ -104,10 +104,10 @@
                     </div>
                     @if(count($fCaixaTransacoes) > 0)
                     <div class="col">
-                        <a href="/transacoes/{{$caixa[0]->caixaId}}">Transações</a>
+                        <a href="/transacoes/{{$caixa->caixaId}}">Transações</a>
                     </div>
                     <div class="col">
-                        <a href="/resumo-financeiro/{{$caixa[0]->caixaId}}">Resumo Financeiro</a>
+                        <a href="/resumo-financeiro/{{$caixa->caixaId}}">Resumo Financeiro</a>
                     </div>
                     @else
                     <div class="col">
