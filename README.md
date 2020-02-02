@@ -130,7 +130,7 @@ Isso acontece porque, pelo fato de você esta usando outra linguagem para seu ba
 
 ![sqlserver error](https://i.imgur.com/kQ8VxZN.png)
 
-Como estamos usando o PHP 7.2, precisamos dos drives de acordo a nossa versão, <a href="https://docs.microsoft.com/en-us/sql/connect/php/system-requirements-for-the-php-sql-driver?view=sql-server-2017#driver-versions" target="blank">clique aqui</a> para ver a tabela que informando sobre.
+Como estamos usando o PHP 7.2 nts, precisamos dos drives de acordo a nossa versão, <a href="https://docs.microsoft.com/en-us/sql/connect/php/system-requirements-for-the-php-sql-driver?view=sql-server-2017#driver-versions" target="blank">clique aqui</a> para ver a tabela que informando sobre.
 
 ![bd drivers](https://i.imgur.com/G8K2RoE.png)
 
@@ -167,7 +167,7 @@ Ao reiniciar, teste se o drive esta funcionando, abra o teu projeto no VSCode, e
 
 `php check.php`
 
-Se a resposta for:
+Se a resposta aparecer ``sqlsrv``:
 ```php
 Array
 (
