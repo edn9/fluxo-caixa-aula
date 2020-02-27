@@ -8,8 +8,8 @@ Aula completa backend/frontend Laravel/PHP com SQL Server rodando em Linux/Windo
 - [Introdução](#Introdução)
 - [Como instalar](#Como-instalar)
 - [Configurando](#Configurando)
-- [Iniciando o Projeto 1/2](#Iniciando-o-Projeto-1/2)
-- [Iniciando o Projeto 2/2](#Iniciando-o-Projeto-2/2)
+- [Iniciando o Projeto 1-2](#Iniciando-o-Projeto-1-2)
+- [Iniciando o Projeto 2-2](#Iniciando-o-Projeto-2-2)
 </h3>
 
 ## Introdução
@@ -184,7 +184,7 @@ Array
 
 ---
 
-## Iniciando o Projeto 1/2
+## Iniciando o Projeto 1-2
 
 Depois de tudo configurado, iremos começar um novo projeto, primeiro escolha um local para a instalação do projeto, abra o git bash e rode:
 
@@ -230,7 +230,7 @@ Routes é onde fica localizado as rotas do nosso projeto, em `web.php` é onde s
 
 ---
 
-## Iniciando o Projeto 2/2
+## Iniciando o Projeto 2-2
 Por fim, iremos dar inicio ao nosso projeto. Primeiro iremos criar uma view para visualização, criação, edição e exclusão dos dados.
 
 Mas antes abra o site digitando:
