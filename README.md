@@ -1,5 +1,5 @@
 # Aula Laravel / PHP - Jan. 2020
-Aula completa backend/frontend Laravel/PHP com SQL Server rodando em Linux/Windows.
+Aula completa backend/frontend Laravel/PHP com SQL Server rodando em Linux/Windows de como criar um CRUD.
 
 ## Sumário
 
